@@ -1,24 +1,39 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import Select from "react-select";
+import "./App.css";
+import { Images } from "./Components/Images";
+import { Preview } from "./Components/Preview";
+import { Sizes } from "./types";
+
+const sizeOptions = Object.values(Sizes).map((size) => ({
+  value: {
+    size,
+    width: Number(size.split("x")[0]),
+    height: Number(size.split("x")[1]),
+  },
+  label: size,
+}));
 
 function App() {
+  const [selectedSize, setSize] = useState(sizeOptions[0]);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Select
+        value={selectedSize}
+        options={sizeOptions}
+        onChange={(e) => {
+          e && setSize(e);
+        }}
+      />
+      <div className="container">
+        <div className="preview">
+          <Preview {...selectedSize.value} />
+        </div>
+        <div className="images">
+          <Images size={selectedSize.value.size} />
+        </div>
+      </div>
     </div>
   );
 }

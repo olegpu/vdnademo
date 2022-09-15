@@ -2,6 +2,21 @@
   text-align: center;
 }
 
+.container {
+  display: flex;
+}
+
+.preview {
+  flex: 1;
+  border-right: 1px solid #ccc;
+}
+
+.images {
+  display: flex;
+  flex-wrap: wrap;
+  flex: 1;
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -26,7 +41,7 @@
 
 .App-link {
   color: #61dafb;
-}
+} 
 
 @keyframes App-logo-spin {
   from {

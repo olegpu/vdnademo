@@ -1,0 +1,16 @@
+.quiz-container {
+  border: 1px solid red;
+}
+
+.options-num,
+.continue-button-wrapper {
+  text-align: left;
+  margin-left: 10px;
+  margin-bottom: 10px;
+}
+
+.options-num span,
+.continue-button-wrapper span {
+  display: inline-block;
+  margin-right: 10px;
+}
